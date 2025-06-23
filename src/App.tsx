@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
@@ -31,7 +32,7 @@ import { useAuth } from './hooks/useAuth';
 
 const AppContent = () => {
   const { user, profile } = useAuth();
-  const { showLanguageModal, setShowLanguageModal, setLanguage } = useLanguage();
+  const { showLanguageModal, setLanguage } = useLanguage();
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
   useEffect(() => {

@@ -3,7 +3,6 @@ import {
   Search, 
   Filter, 
   Eye, 
-  Edit, 
   Package, 
   Truck, 
   CheckCircle,
@@ -34,7 +33,7 @@ const OrderManagement = () => {
         .from('orders')
         .select(`
           *,
-          profiles!orders_user_id_fkey(full_name, email, phone),
+          profile:profiles!orders_user_id_fkey(full_name, email, phone),
           order_items(
             *,
             product:products(title, original_price)
@@ -110,8 +109,8 @@ const OrderManagement = () => {
 
   const filteredOrders = orders.filter(order => {
     const matchesSearch = order.order_number.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         order.profiles?.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         order.profiles?.email?.toLowerCase().includes(searchTerm.toLowerCase());
+                         order.profile?.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         order.profile?.email?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = !filterStatus || order.status === filterStatus;
     const matchesPayment = !filterPayment || order.payment_status === filterPayment;
     
@@ -244,10 +243,10 @@ const OrderManagement = () => {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
                         <div className="text-sm font-medium text-temple-brown-deep">
-                          {order.profiles?.full_name || 'Guest'}
+                          {order.profile?.full_name || 'Guest'}
                         </div>
                         <div className="text-sm text-temple-brown-light">
-                          {order.profiles?.email}
+                          {order.profile?.email}
                         </div>
                       </div>
                     </td>
@@ -372,18 +371,18 @@ const OrderManagement = () => {
                   <h3 className="font-medium text-temple-brown-deep">Customer Information</h3>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <span className="font-medium">{selectedOrder.profiles?.full_name || 'Guest'}</span>
+                      <span className="font-medium">{selectedOrder.profile?.full_name || 'Guest'}</span>
                     </div>
-                    {selectedOrder.profiles?.email && (
+                    {selectedOrder.profile?.email && (
                       <div className="flex items-center space-x-2">
                         <Mail className="h-4 w-4 text-temple-brown-light" />
-                        <span className="text-sm">{selectedOrder.profiles.email}</span>
+                        <span className="text-sm">{selectedOrder.profile.email}</span>
                       </div>
                     )}
-                    {selectedOrder.profiles?.phone && (
+                    {selectedOrder.profile?.phone && (
                       <div className="flex items-center space-x-2">
                         <Phone className="h-4 w-4 text-temple-brown-light" />
-                        <span className="text-sm">{selectedOrder.profiles.phone}</span>
+                        <span className="text-sm">{selectedOrder.profile.phone}</span>
                       </div>
                     )}
                   </div>

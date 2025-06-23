@@ -12,6 +12,30 @@ import {
 import { supabase } from '../../lib/supabase';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 
+interface SalesData {
+  date: string;
+  sales: number;
+  orders: number;
+}
+
+interface RecentOrder {
+  id: string;
+  order_number: string;
+  total_amount: number;
+  status: string;
+  profile?: {
+    full_name?: string;
+  };
+}
+
+interface TopProduct {
+  id: string;
+  title: string;
+  view_count: number;
+  original_price: number;
+  rating: number;
+}
+
 const Dashboard = () => {
   const [stats, setStats] = useState({
     totalProducts: 0,
@@ -21,9 +45,9 @@ const Dashboard = () => {
     pendingOrders: 0,
     lowStockProducts: 0,
   });
-  const [recentOrders, setRecentOrders] = useState([]);
-  const [topProducts, setTopProducts] = useState([]);
-  const [salesData, setSalesData] = useState([]);
+  const [recentOrders, setRecentOrders] = useState<RecentOrder[]>([]);
+  const [topProducts, setTopProducts] = useState<TopProduct[]>([]);
+  const [salesData, setSalesData] = useState<SalesData[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -49,7 +73,7 @@ const Dashboard = () => {
         supabase.from('orders').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
         supabase.from('orders').select(`
           *,
-          profiles!orders_user_id_fkey(full_name, email),
+          profile:profiles!orders_user_id_fkey(full_name, email),
           order_items(quantity, product:products(title))
         `).order('created_at', { ascending: false }).limit(5),
         supabase.from('products').select('*').order('view_count', { ascending: false }).limit(5)
