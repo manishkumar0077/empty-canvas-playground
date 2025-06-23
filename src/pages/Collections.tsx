@@ -3,11 +3,9 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Search, Filter, Star } from 'lucide-react';
 import { products } from '../data/products';
-import { useLanguage } from '../context/LanguageContext';
 
 const Collections = () => {
   const { category } = useParams();
-  const { language } = useLanguage();
   
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('name');
@@ -15,23 +13,23 @@ const Collections = () => {
 
   const filteredProducts = products.filter(product => {
     const searchTermLower = searchTerm.toLowerCase();
-    const matchesSearch = product.title.toLowerCase().includes(searchTermLower) ||
+    const matchesSearch = product.name?.toLowerCase().includes(searchTermLower) ||
                            product.description.toLowerCase().includes(searchTermLower) ||
-                           product.tags.some((tag: string) => tag.toLowerCase().includes(searchTermLower));
+                           product.category.toLowerCase().includes(searchTermLower);
 
     const matchesCategory = !category || product.category === category;
-    const matchesPriceRange = product.original_price >= priceRange[0] && product.original_price <= priceRange[1];
+    const matchesPriceRange = product.price >= priceRange[0] && product.price <= priceRange[1];
 
     return matchesSearch && matchesCategory && matchesPriceRange;
   });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortBy === 'name') {
-      return a.title.localeCompare(b.title);
+      return (a.name || '').localeCompare(b.name || '');
     } else if (sortBy === 'price') {
-      return a.original_price - b.original_price;
+      return a.price - b.price;
     } else if (sortBy === 'rating') {
-      return b.rating - a.rating;
+      return (b.rating || 0) - (a.rating || 0);
     }
     return 0;
   });
@@ -89,18 +87,18 @@ const Collections = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedProducts.map((product) => (
             <Link to={`/product/${product.id}`} key={product.id} className="bg-white rounded-2xl shadow-temple hover:shadow-temple-lg transition-shadow duration-300 overflow-hidden">
-              <img src={product.image_url} alt={product.title} className="w-full h-64 object-cover" />
+              <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
               <div className="p-6">
-                <h3 className="font-serif text-xl text-temple-brown-deep mb-2">{product.title}</h3>
+                <h3 className="font-serif text-xl text-temple-brown-deep mb-2">{product.name}</h3>
                 <div className="flex items-center mb-3">
-                  {[...Array(product.rating)].map((_, i) => (
+                  {[...Array(product.rating || 0)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 text-temple-saffron fill-current" />
                   ))}
                 </div>
                 <p className="text-temple-brown-medium mb-4">{product.description.substring(0, 75)}...</p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-xl font-bold text-temple-brown-deep">₹{product.original_price}</span>
+                    <span className="text-xl font-bold text-temple-brown-deep">₹{product.price}</span>
                   </div>
                   <button className="bg-temple-gold hover:bg-temple-saffron text-white px-4 py-2 rounded-md transition-colors duration-200">
                     View

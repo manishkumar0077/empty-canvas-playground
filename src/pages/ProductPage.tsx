@@ -7,13 +7,13 @@ import { useCart } from '../context/CartContext';
 
 interface Product {
   id: string;
-  title: string;
+  name: string;
   category: string;
   rating: number;
   reviews: number;
   description: string;
-  original_price: number;
-  image_url: string;
+  price: number;
+  image: string;
 }
 
 const ProductPage = () => {
@@ -24,7 +24,18 @@ const ProductPage = () => {
 
   useEffect(() => {
     const foundProduct = products.find((p) => p.id === id);
-    setProduct(foundProduct || null);
+    if (foundProduct) {
+      setProduct({
+        id: foundProduct.id,
+        name: foundProduct.name,
+        category: foundProduct.category,
+        rating: foundProduct.rating || 0,
+        reviews: foundProduct.reviews || 0,
+        description: foundProduct.description,
+        price: foundProduct.price,
+        image: foundProduct.image
+      });
+    }
   }, [id]);
 
   if (!product) {
@@ -44,9 +55,9 @@ const ProductPage = () => {
   const handleAddToCart = () => {
     addToCart({
       id: product.id,
-      title: product.title,
-      price: product.original_price,
-      image: product.image_url,
+      title: product.name,
+      price: product.price,
+      image: product.image,
       category: product.category
     }, quantity);
   };
@@ -64,19 +75,19 @@ const ProductPage = () => {
             Collections
           </Link>
           <span className="mx-2 text-temple-brown-medium">/</span>
-          <span className="text-temple-brown-deep">{product.title}</span>
+          <span className="text-temple-brown-deep">{product.name}</span>
         </div>
 
         {/* Product Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Product Image */}
           <div>
-            <img src={product.image_url} alt={product.title} className="w-full rounded-2xl shadow-temple" />
+            <img src={product.image} alt={product.name} className="w-full rounded-2xl shadow-temple" />
           </div>
 
           {/* Product Info */}
           <div>
-            <h1 className="font-serif text-3xl text-temple-brown-deep mb-4">{product.title}</h1>
+            <h1 className="font-serif text-3xl text-temple-brown-deep mb-4">{product.name}</h1>
             <p className="text-temple-saffron font-medium mb-2">{product.category}</p>
             <div className="flex items-center mb-4">
               {[...Array(product.rating)].map((_, i) => (
@@ -89,7 +100,7 @@ const ProductPage = () => {
             {/* Price and Quantity */}
             <div className="flex items-center justify-between mb-6">
               <div>
-                <span className="text-2xl font-bold text-temple-brown-deep">₹{product.original_price}</span>
+                <span className="text-2xl font-bold text-temple-brown-deep">₹{product.price}</span>
               </div>
               <div className="flex items-center">
                 <button

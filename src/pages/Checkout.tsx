@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CreditCard, Truck, Shield, ArrowLeft, User, Mail, Phone, MapPin } from 'lucide-react';
+import { CreditCard, Truck, Shield, ArrowLeft, User, Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -63,7 +64,7 @@ const Checkout = () => {
           <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-temple-lg p-8 border border-temple-gold/20">
             <div className="flex items-center justify-center mb-6">
               <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg">
-                <Shield className="h-10 w-10 text-white" />
+                <CheckCircle className="h-10 w-10 text-white" />
               </div>
             </div>
             
@@ -404,9 +405,9 @@ const Checkout = () => {
                       <div className="space-y-4">
                         {items.map((item) => (
                           <div key={item.id} className="flex items-center space-x-4 p-4 bg-temple-gold-pale/20 rounded-xl">
-                            <img src={item.image} alt={item.name} className="w-16 h-16 rounded-lg object-cover" />
+                            <img src={item.image} alt={item.title} className="w-16 h-16 rounded-lg object-cover" />
                             <div className="flex-grow">
-                              <h5 className="font-medium text-temple-brown-deep">{item.name}</h5>
+                              <h5 className="font-medium text-temple-brown-deep">{item.title}</h5>
                               <p className="text-sm text-temple-brown-medium">
                                 {language === 'hi' ? 'मात्रा' : 'Quantity'}: {item.quantity}
                               </p>

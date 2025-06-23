@@ -1,87 +1,116 @@
 
 import { useState } from 'react';
-import { Star, Heart, Shield } from 'lucide-react';
+import { Heart, Shield, Star } from 'lucide-react';
 
 interface Blessing {
   id: string;
   name: string;
-  price: number;
   description: string;
-  duration: string;
+  price: number;
   benefits: string[];
+  duration: string;
 }
 
 interface Package {
   id: string;
   name: string;
+  description: string;
   price: number;
   originalPrice: number;
-  description: string;
-  items: string[];
-  popular: boolean;
+  includes: string[];
+  rating: number;
+  reviews: number;
 }
 
 const SacredBlessings = () => {
-  const [blessings] = useState<Blessing[]>([
-    {
-      id: '1',
-      name: 'Ganesha Blessing',
-      price: 500,
-      description: 'Remove obstacles and bring good fortune',
-      duration: 'Lifetime',
-      benefits: ['Obstacle removal', 'Good fortune', 'Success in endeavors']
-    }
-  ]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const [packages] = useState<Package[]>([
+  const blessings: Blessing[] = [
     {
       id: '1',
-      name: 'Complete Sacred Package',
-      price: 2000,
-      originalPrice: 2500,
-      description: 'All blessings combined for maximum benefit',
-      items: ['Ganesha Blessing', 'Lakshmi Blessing', 'Saraswati Blessing'],
-      popular: true
+      name: 'Ganesh Blessing',
+      description: 'Remove obstacles and invite prosperity',
+      price: 500,
+      benefits: ['Obstacle removal', 'Success in new ventures', 'Wisdom and knowledge'],
+      duration: '30 days'
+    },
+    {
+      id: '2',
+      name: 'Lakshmi Blessing',
+      description: 'Attract wealth and abundance',
+      price: 750,
+      benefits: ['Financial prosperity', 'Material abundance', 'Good fortune'],
+      duration: '45 days'
     }
-  ]);
+  ];
+
+  const packages: Package[] = [
+    {
+      id: '1',
+      name: 'Complete Protection Package',
+      description: 'Comprehensive spiritual protection',
+      price: 1999,
+      originalPrice: 2999,
+      includes: ['Ganesh Blessing', 'Durga Protection', 'Evil Eye Protection'],
+      rating: 5,
+      reviews: 156
+    },
+    {
+      id: '2',
+      name: 'Prosperity Bundle',
+      description: 'Attract wealth and success',
+      price: 2499,
+      originalPrice: 3499,
+      includes: ['Lakshmi Blessing', 'Kubera Blessing', 'Success Mantra'],
+      rating: 5,
+      reviews: 203
+    }
+  ];
 
   return (
-    <div className="bg-temple-ivory min-h-screen pt-20">
+    <div className="min-h-screen bg-temple-ivory pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="font-serif text-4xl text-temple-brown-deep mb-4">Sacred Blessings</h1>
-          <p className="text-lg text-temple-brown-medium max-w-3xl mx-auto">
-            Enhance your spiritual jewelry with authentic Vedic blessings performed by experienced priests
+          <h1 className="font-serif text-4xl text-temple-brown-deep mb-4">
+            Sacred Blessings & Spiritual Services
+          </h1>
+          <p className="text-xl text-temple-brown-medium max-w-3xl mx-auto">
+            Receive personalized blessings and spiritual guidance from experienced practitioners
           </p>
         </div>
 
         {/* Individual Blessings */}
         <div className="mb-16">
-          <h2 className="font-serif text-3xl text-temple-brown-deep mb-8 text-center">Individual Blessings</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blessings.map((blessing: Blessing, index: number) => (
-              <div key={blessing.id} className="bg-white rounded-2xl shadow-temple p-6 border border-temple-gold/20">
+          <h2 className="font-serif text-3xl text-temple-brown-deep mb-8 text-center">
+            Individual Blessings
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blessings.map((blessing) => (
+              <div key={blessing.id} className="bg-white rounded-2xl shadow-temple p-6 hover:shadow-temple-lg transition-shadow">
                 <div className="flex items-center justify-between mb-4">
                   <Shield className="h-8 w-8 text-temple-gold" />
-                  <span className="text-temple-saffron font-medium">{blessing.duration}</span>
+                  <span className="text-sm text-temple-brown-light">{blessing.duration}</span>
                 </div>
-                <h3 className="font-serif text-xl text-temple-brown-deep mb-2">{blessing.name}</h3>
+                <h3 className="font-serif text-xl text-temple-brown-deep mb-3">{blessing.name}</h3>
                 <p className="text-temple-brown-medium mb-4">{blessing.description}</p>
+                
                 <div className="mb-4">
                   <h4 className="font-medium text-temple-brown-deep mb-2">Benefits:</h4>
                   <ul className="space-y-1">
-                    {blessing.benefits.map((benefit: string, idx: number) => (
-                      <li key={idx} className="text-sm text-temple-brown-light flex items-center">
-                        <Star className="h-3 w-3 text-temple-saffron mr-2 flex-shrink-0" />
+                    {blessing.benefits.map((benefit) => (
+                      <li key={benefit} className="text-sm text-temple-brown-medium flex items-center">
+                        <span className="w-2 h-2 bg-temple-gold rounded-full mr-2"></span>
                         {benefit}
                       </li>
                     ))}
                   </ul>
                 </div>
+                
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-temple-brown-deep">₹{blessing.price}</span>
-                  <button className="bg-temple-gold hover:bg-temple-saffron text-white px-4 py-2 rounded-md transition-colors duration-200">
-                    Add Blessing
+                  <button className="bg-gradient-to-r from-temple-saffron to-temple-gold text-white px-6 py-2 rounded-full hover:shadow-gold-glow transition-shadow">
+                    Select
                   </button>
                 </div>
               </div>
@@ -91,36 +120,46 @@ const SacredBlessings = () => {
 
         {/* Blessing Packages */}
         <div className="mb-16">
-          <h2 className="font-serif text-3xl text-temple-brown-deep mb-8 text-center">Blessing Packages</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {packages.map((pkg: Package, index: number) => (
-              <div key={pkg.id} className={`bg-white rounded-2xl shadow-temple p-6 border-2 ${pkg.popular ? 'border-temple-gold' : 'border-temple-gold/20'} relative`}>
-                {pkg.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-temple-gold text-white px-4 py-1 rounded-full text-sm font-medium">Most Popular</span>
-                  </div>
-                )}
-                <div className="flex items-center justify-between mb-4">
-                  <Heart className="h-8 w-8 text-temple-kumkum" />
-                  <div className="text-right">
-                    <span className="text-sm text-temple-brown-light line-through">₹{pkg.originalPrice}</span>
-                    <span className="text-2xl font-bold text-temple-brown-deep ml-2">₹{pkg.price}</span>
-                  </div>
+          <h2 className="font-serif text-3xl text-temple-brown-deep mb-8 text-center">
+            Blessing Packages
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {packages.map((pkg) => (
+              <div key={pkg.id} className="bg-white rounded-2xl shadow-temple p-8 hover:shadow-temple-lg transition-shadow relative overflow-hidden">
+                <div className="absolute top-4 right-4 bg-temple-kumkum text-white px-3 py-1 rounded-full text-sm font-medium">
+                  Save ₹{pkg.originalPrice - pkg.price}
                 </div>
-                <h3 className="font-serif text-xl text-temple-brown-deep mb-2">{pkg.name}</h3>
+                
+                <h3 className="font-serif text-2xl text-temple-brown-deep mb-3">{pkg.name}</h3>
                 <p className="text-temple-brown-medium mb-4">{pkg.description}</p>
-                <div className="mb-4">
-                  <h4 className="font-medium text-temple-brown-deep mb-2">Includes:</h4>
-                  <ul className="space-y-1">
-                    {pkg.items.map((item: string, idx: number) => (
-                      <li key={idx} className="text-sm text-temple-brown-light flex items-center">
-                        <Star className="h-3 w-3 text-temple-saffron mr-2 flex-shrink-0" />
+                
+                <div className="flex items-center mb-4">
+                  {[...Array(pkg.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-temple-saffron fill-current" />
+                  ))}
+                  <span className="text-temple-brown-light ml-2">({pkg.reviews} reviews)</span>
+                </div>
+                
+                <div className="mb-6">
+                  <h4 className="font-medium text-temple-brown-deep mb-3">Package Includes:</h4>
+                  <ul className="space-y-2">
+                    {pkg.includes.map((item) => (
+                      <li key={item} className="text-temple-brown-medium flex items-center">
+                        <span className="w-2 h-2 bg-temple-gold rounded-full mr-3"></span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <button className="w-full bg-gradient-to-r from-temple-saffron to-temple-gold text-white py-3 rounded-full font-medium hover:shadow-gold-glow transition-shadow duration-300">
+                
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <span className="text-3xl font-bold text-temple-brown-deep">₹{pkg.price}</span>
+                    <span className="text-lg text-temple-brown-light line-through ml-2">₹{pkg.originalPrice}</span>
+                  </div>
+                </div>
+                
+                <button className="w-full bg-gradient-to-r from-temple-saffron to-temple-gold text-white py-3 rounded-full font-medium hover:shadow-gold-glow transition-shadow">
                   Choose Package
                 </button>
               </div>
@@ -129,69 +168,56 @@ const SacredBlessings = () => {
         </div>
 
         {/* How It Works */}
-        <div className="bg-white rounded-2xl shadow-temple p-8 border border-temple-gold/20">
-          <h2 className="font-serif text-3xl text-temple-brown-deep mb-8 text-center">How Sacred Blessings Work</h2>
+        <div className="bg-white rounded-3xl shadow-temple p-8 mb-16">
+          <h2 className="font-serif text-3xl text-temple-brown-deep mb-8 text-center">
+            How Sacred Blessings Work
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-temple-gold-pale rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-temple-brown-deep">1</span>
+              <div className="w-16 h-16 bg-temple-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-white">1</span>
               </div>
-              <h3 className="font-medium text-temple-brown-deep mb-2">Choose Your Blessing</h3>
-              <p className="text-temple-brown-medium">Select from our collection of authentic Vedic blessings</p>
+              <h3 className="font-medium text-temple-brown-deep mb-2">Select Your Blessing</h3>
+              <p className="text-temple-brown-medium">Choose from our range of personalized blessings</p>
             </div>
             <div className="text-center">
-              <div className="bg-temple-gold-pale rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-temple-brown-deep">2</span>
+              <div className="w-16 h-16 bg-temple-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-white">2</span>
               </div>
-              <h3 className="font-medium text-temple-brown-deep mb-2">Sacred Ritual</h3>
-              <p className="text-temple-brown-medium">Our experienced priests perform the blessing ritual</p>
+              <h3 className="font-medium text-temple-brown-deep mb-2">Personalization</h3>
+              <p className="text-temple-brown-medium">Share your intentions and specific needs</p>
             </div>
             <div className="text-center">
-              <div className="bg-temple-gold-pale rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-temple-brown-deep">3</span>
+              <div className="w-16 h-16 bg-temple-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-white">3</span>
               </div>
-              <h3 className="font-medium text-temple-brown-deep mb-2">Blessed Jewelry</h3>
-              <p className="text-temple-brown-medium">Receive your spiritually charged jewelry</p>
+              <h3 className="font-medium text-temple-brown-deep mb-2">Receive Blessings</h3>
+              <p className="text-temple-brown-medium">Our practitioners perform the ritual and send you updates</p>
             </div>
           </div>
         </div>
 
         {/* Testimonials */}
-        <div className="mt-16">
-          <h2 className="font-serif text-3xl text-temple-brown-deep mb-8 text-center">Blessed Experiences</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-2xl shadow-temple p-6 border border-temple-gold/20">
-              <div className="flex items-center space-x-2 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-temple-saffron fill-current" />
-                ))}
-              </div>
-              <p className="text-temple-brown-medium italic mb-4">
-                "The Ganesha blessing on my pendant has brought incredible positive changes to my life. Highly recommended!"
-              </p>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-temple-brown-deep">Priya Sharma</p>
-                  <p className="text-sm text-temple-brown-light">Mumbai</p>
+        <div className="text-center">
+          <h2 className="font-serif text-3xl text-temple-brown-deep mb-8">
+            What Our Devotees Say
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-temple p-6">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="h-4 w-4 text-temple-saffron fill-current" />
+                  ))}
+                </div>
+                <p className="text-temple-brown-medium mb-4 italic">
+                  "The blessings brought peace and positive changes to my life. Highly recommended!"
+                </p>
+                <div className="text-sm text-temple-brown-deep font-medium">
+                  - Devotee {i}
                 </div>
               </div>
-            </div>
-            <div className="bg-white rounded-2xl shadow-temple p-6 border border-temple-gold/20">
-              <div className="flex items-center space-x-2 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-temple-saffron fill-current" />
-                ))}
-              </div>
-              <p className="text-temple-brown-medium italic mb-4">
-                "The complete blessing package has enhanced my spiritual practice beyond expectations."
-              </p>
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-temple-brown-deep">Raj Kumar</p>
-                  <p className="text-sm text-temple-brown-light">Delhi</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
