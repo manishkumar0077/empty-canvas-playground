@@ -17,7 +17,7 @@ interface Product {
 }
 
 const ProductPage = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(1);
@@ -55,10 +55,10 @@ const ProductPage = () => {
   const handleAddToCart = () => {
     addToCart({
       id: product.id,
-      title: product.name,
+      name: product.name,
       price: product.price,
       image: product.image,
-      category: product.category
+      quantity: 1
     }, quantity);
   };
 

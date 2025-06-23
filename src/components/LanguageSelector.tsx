@@ -1,5 +1,4 @@
 
-import { Globe, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const LanguageSelector = () => {

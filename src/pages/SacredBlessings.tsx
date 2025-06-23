@@ -1,6 +1,5 @@
 
-import { useState } from 'react';
-import { Heart, Shield, Star } from 'lucide-react';
+import { Shield, Star } from 'lucide-react';
 
 interface Blessing {
   id: string;
@@ -23,8 +22,6 @@ interface Package {
 }
 
 const SacredBlessings = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
   const blessings: Blessing[] = [
     {
       id: '1',
