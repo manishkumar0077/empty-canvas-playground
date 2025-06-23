@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Truck, Package, Clock, MapPin, Shield, Star } from 'lucide-react';
 
 const ShippingPolicy = () => {

@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import { Link, Outlet, Navigate, useLocation } from 'react-router-dom';
+import { Link, Outlet, Navigate } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Package, 
@@ -19,7 +18,6 @@ import { useAuth } from '../../hooks/useAuth';
 const AdminLayout = () => {
   const { user, profile, isAdmin, signOut } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const location = useLocation();
 
   if (!user || !isAdmin) {
     return <Navigate to="/login" replace />;
