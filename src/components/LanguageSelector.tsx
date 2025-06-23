@@ -1,3 +1,4 @@
+
 import { Globe, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -5,7 +6,7 @@ const LanguageSelector = () => {
   const { language, setLanguage } = useLanguage();
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(e.target.value);
+    setLanguage(e.target.value as 'en' | 'hi');
   };
 
   return (

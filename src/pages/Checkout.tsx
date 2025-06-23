@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CreditCard, Truck, Shield, Check, ArrowLeft, Sparkles } from 'lucide-react';
+import { CreditCard, Truck, Shield, ArrowLeft, User, Mail, Phone, MapPin } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
@@ -63,7 +63,7 @@ const Checkout = () => {
           <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-temple-lg p-8 border border-temple-gold/20">
             <div className="flex items-center justify-center mb-6">
               <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg">
-                <CheckCircle className="h-10 w-10 text-white" />
+                <Shield className="h-10 w-10 text-white" />
               </div>
             </div>
             
@@ -504,7 +504,7 @@ const Checkout = () => {
                     <span>{language === 'hi' ? 'मुफ्त शिपिंग ₹1999+' : 'Free Shipping ₹1999+'}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-temple-gold" />
+                    <Shield className="h-4 w-4 text-temple-gold" />
                     <span>{language === 'hi' ? '7 दिन वापसी नीति' : '7 Day Return Policy'}</span>
                   </div>
                 </div>

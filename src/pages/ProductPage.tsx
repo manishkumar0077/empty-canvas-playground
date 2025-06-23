@@ -1,6 +1,7 @@
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Star, Heart, Share2, ShoppingCart, Minus, Plus, Truck, Shield, ArrowLeft, Sparkles, Package, Award } from 'lucide-react';
+import { Star, Heart, Share2, Minus, Plus, ArrowLeft, Sparkles, Package } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -10,7 +11,7 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const [selectedBlessings, setSelectedBlessings] = useState<string[]>([]);
-  const { addItemToCart } = useCart();
+  const { addToCart } = useCart();
   const { language } = useLanguage();
 
   useEffect(() => {
@@ -69,7 +70,7 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (product) {
-      addItemToCart({
+      addToCart({
         ...product,
         quantity,
         selectedBlessings: product.blessings ? selectedBlessings : []

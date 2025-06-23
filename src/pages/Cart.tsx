@@ -1,7 +1,5 @@
-
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Minus, Plus, X, Sparkles, Gift, ShoppingBag, ArrowRight, Heart } from 'lucide-react';
+import { Minus, Plus, X, Sparkles, ShoppingBag, ArrowRight, Heart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';

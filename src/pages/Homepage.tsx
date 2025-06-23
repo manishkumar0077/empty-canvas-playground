@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import { Star, ArrowRight, Sparkles, Heart, ShoppingCart, Package, Users, Award, Shield } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../context/LanguageContext';
+import { Star, Sparkles } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const Homepage = () => {
+  const { addToCart } = useCart();
   const { language } = useLanguage();
-  const { items } = useCart();
-  const [featuredCategories, setFeaturedCategories] = useState([
+  const [featuredCategories] = useState([
     {
       name: 'Deity Collection',
       hindiName: 'देव संग्रह',
@@ -28,7 +28,7 @@ const Homepage = () => {
     },
   ]);
 
-  const [testimonials, setTestimonials] = useState([
+  const [testimonials] = useState([
     {
       name: 'Priya Sharma',
       location: 'Mumbai',
@@ -48,12 +48,6 @@ const Homepage = () => {
       rating: 5,
     },
   ]);
-
-  useEffect(() => {
-    // Simulate fetching featured categories from an API
-    // In a real application, you would fetch this data from your backend
-    // For now, we'll just use the static data defined above
-  }, []);
 
   return (
     <div className="bg-temple-ivory">
