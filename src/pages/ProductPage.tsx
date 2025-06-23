@@ -1,20 +1,30 @@
+
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Star, Plus, Minus, ShoppingCart, Heart, Truck, Shield, RotateCcw, Award } from 'lucide-react';
+import { Star, Plus, Minus, ShoppingCart, Truck, Shield, RotateCcw, Award } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
-import { useLanguage } from '../context/LanguageContext';
+
+interface Product {
+  id: string;
+  title: string;
+  category: string;
+  rating: number;
+  reviews: number;
+  description: string;
+  original_price: number;
+  image_url: string;
+}
 
 const ProductPage = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
-  const { language } = useLanguage();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const foundProduct = products.find((p) => p.id === id);
-    setProduct(foundProduct);
+    setProduct(foundProduct || null);
   }, [id]);
 
   if (!product) {
@@ -32,7 +42,13 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    addToCart(product, quantity);
+    addToCart({
+      id: product.id,
+      title: product.title,
+      price: product.original_price,
+      image: product.image_url,
+      category: product.category
+    }, quantity);
   };
 
   return (
@@ -55,7 +71,7 @@ const ProductPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Product Image */}
           <div>
-            <img src={product.image} alt={product.title} className="w-full rounded-2xl shadow-temple" />
+            <img src={product.image_url} alt={product.title} className="w-full rounded-2xl shadow-temple" />
           </div>
 
           {/* Product Info */}
@@ -73,10 +89,7 @@ const ProductPage = () => {
             {/* Price and Quantity */}
             <div className="flex items-center justify-between mb-6">
               <div>
-                <span className="text-2xl font-bold text-temple-brown-deep">₹{product.price}</span>
-                {product.discount && (
-                  <span className="text-temple-saffron ml-2 line-through">₹{product.originalPrice}</span>
-                )}
+                <span className="text-2xl font-bold text-temple-brown-deep">₹{product.original_price}</span>
               </div>
               <div className="flex items-center">
                 <button

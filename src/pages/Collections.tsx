@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Search, Filter, Star, Heart } from 'lucide-react';
+import { Search, Filter, Star } from 'lucide-react';
 import { products } from '../data/products';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -10,14 +11,13 @@ const Collections = () => {
   
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('name');
-  const [priceRange, setPriceRange] = useState([0, 100000]);
-  const [products] = useState([]);
+  const [priceRange] = useState([0, 100000]);
 
   const filteredProducts = products.filter(product => {
     const searchTermLower = searchTerm.toLowerCase();
     const matchesSearch = product.title.toLowerCase().includes(searchTermLower) ||
                            product.description.toLowerCase().includes(searchTermLower) ||
-                           product.tags.some(tag => tag.toLowerCase().includes(searchTermLower));
+                           product.tags.some((tag: string) => tag.toLowerCase().includes(searchTermLower));
 
     const matchesCategory = !category || product.category === category;
     const matchesPriceRange = product.original_price >= priceRange[0] && product.original_price <= priceRange[1];

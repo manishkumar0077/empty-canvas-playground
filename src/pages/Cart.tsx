@@ -1,16 +1,18 @@
-import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
-import { Minus, Plus, Trash2, ShoppingBag, Gift } from 'lucide-react';
+import { Minus, Plus, Trash2, ShoppingBag, Gift, Sparkles } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 
 const Cart = () => {
   const { items, addToCart, removeFromCart, clearCart, getItemCount, getTotal } = useCart();
   const { language } = useLanguage();
-  const [isCheckout, setIsCheckout] = useState(false);
 
   const handleIncreaseQuantity = (productId: string) => {
-    addToCart({ id: productId });
+    const item = items.find(i => i.id === productId);
+    if (item) {
+      addToCart(item, 1);
+    }
   };
 
   const handleDecreaseQuantity = (productId: string) => {

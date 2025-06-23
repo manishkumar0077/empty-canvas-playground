@@ -1,12 +1,9 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Sparkles, ArrowRight, Package, Users, Award, Shield } from 'lucide-react';
-import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 
 const Homepage = () => {
-  const { addToCart } = useCart();
   const { language } = useLanguage();
   const [featuredCategories] = useState([
     {
