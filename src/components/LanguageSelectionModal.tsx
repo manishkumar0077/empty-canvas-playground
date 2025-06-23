@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Globe, Sparkles, Star } from 'lucide-react';
 
 interface LanguageSelectionModalProps {
