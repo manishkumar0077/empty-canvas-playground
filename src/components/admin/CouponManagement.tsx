@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { 
   Plus, 
@@ -65,7 +64,7 @@ const CouponManagement = () => {
     Object.keys(coupon).forEach(key => {
       let value = coupon[key as keyof Coupon];
       if (key === 'starts_at' || key === 'expires_at') {
-        value = value ? new Date(value).toISOString().slice(0, 16) : '';
+        value = value && typeof value === 'string' ? new Date(value).toISOString().slice(0, 16) : '';
       }
       setValue(key, value);
     });

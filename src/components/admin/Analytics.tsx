@@ -1,14 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { 
-  TrendingUp, 
   Users, 
   ShoppingCart, 
   DollarSign,
-  Package,
-  Eye,
-  Star,
-  Calendar
+  Package
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
@@ -18,8 +14,15 @@ interface AnalyticsData {
   totalCustomers: number;
   totalProducts: number;
   recentOrders: any[];
-  topProducts: any[];
+  topProducts: Array<{ title: string; quantity: number }>;
   salesData: any[];
+}
+
+interface OrderItem {
+  quantity: number;
+  product: {
+    title: string;
+  };
 }
 
 const Analytics = () => {
@@ -81,9 +84,9 @@ const Analytics = () => {
       const recentOrders = orders?.slice(0, 5) || [];
 
       // Calculate top products
-      const productSales = {};
+      const productSales: Record<string, number> = {};
       orders?.forEach(order => {
-        order.order_items?.forEach(item => {
+        order.order_items?.forEach((item: OrderItem) => {
           if (productSales[item.product.title]) {
             productSales[item.product.title] += item.quantity;
           } else {
@@ -93,8 +96,8 @@ const Analytics = () => {
       });
 
       const topProducts = Object.entries(productSales)
-        .map(([title, quantity]) => ({ title, quantity }))
-        .sort((a, b) => b.quantity - a.quantity)
+        .map(([title, quantity]) => ({ title, quantity: quantity as number }))
+        .sort((a, b) => (b.quantity as number) - (a.quantity as number))
         .slice(0, 5);
 
       setData({

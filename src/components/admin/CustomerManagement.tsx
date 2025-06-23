@@ -2,11 +2,9 @@
 import { useState, useEffect } from 'react';
 import { 
   Search, 
-  Filter, 
   Eye, 
   Mail, 
   Phone,
-  MapPin,
   ShoppingBag,
   Calendar,
   User
