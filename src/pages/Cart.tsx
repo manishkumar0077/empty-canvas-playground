@@ -127,7 +127,7 @@ const Cart = () => {
                     </div>
 
                     {/* Selected Blessings */}
-                    {item.selectedBlessings.length > 0 && (
+                    {item.selectedBlessings && item.selectedBlessings.length > 0 && (
                       <div className="bg-temple-gold-pale/30 rounded-xl p-4 mb-4">
                         <h4 className="font-medium text-temple-brown-deep mb-3 flex items-center">
                           <Sparkles className="h-4 w-4 mr-2 text-temple-gold" />
@@ -135,7 +135,7 @@ const Cart = () => {
                         </h4>
                         <div className="space-y-1">
                           {item.selectedBlessings.map((blessingId: string) => {
-                            const blessing = item.blessings.find((b: any) => b.id === blessingId);
+                            const blessing = item.blessings?.find((b: any) => b.id === blessingId);
                             return blessing ? (
                               <div key={blessingId} className="flex justify-between text-sm">
                                 <span className="text-temple-brown-medium">{blessing.name}</span>

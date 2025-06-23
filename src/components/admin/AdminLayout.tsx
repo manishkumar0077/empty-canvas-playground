@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import { Link, Outlet, useLocation, Navigate } from 'react-router-dom';
 import { 
   LayoutDashboard, 
@@ -10,7 +11,6 @@ import {
   BarChart3, 
   Settings,
   Menu,
-  X,
   LogOut,
   Sparkles
 } from 'lucide-react';
@@ -97,7 +97,17 @@ const AdminLayout = () => {
   );
 };
 
-const SidebarContent = ({ navigation, onSignOut, profile }: any) => {
+interface SidebarContentProps {
+  navigation: Array<{
+    name: string;
+    href: string;
+    icon: any;
+  }>;
+  onSignOut: () => void;
+  profile: any;
+}
+
+const SidebarContent = ({ navigation, onSignOut, profile }: SidebarContentProps) => {
   const location = useLocation();
 
   return (
