@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Instagram, Facebook, Twitter, Phone, Mail, MapPin, Heart } from 'lucide-react';
+import { Sparkles, Instagram, Facebook, Twitter, Phone, Mail, MapPin, Heart, Youtube } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
@@ -76,6 +76,9 @@ const Footer = () => {
               </a>
               <a href="#" className="group p-2 bg-temple-gold/20 hover:bg-temple-gold rounded-full transition-all duration-300">
                 <Twitter className="h-5 w-5 text-temple-gold group-hover:text-white" />
+              </a>
+              <a href="#" className="group p-2 bg-temple-gold/20 hover:bg-temple-gold rounded-full transition-all duration-300">
+                <Youtube className="h-5 w-5 text-temple-gold group-hover:text-white" />
               </a>
             </div>
           </div>

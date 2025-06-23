@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe, Sparkles, Star } from 'lucide-react';
+import { Globe, Sparkles, Star, X } from 'lucide-react';
 
 interface LanguageSelectionModalProps {
   isOpen: boolean;

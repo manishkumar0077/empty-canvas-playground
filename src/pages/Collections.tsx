@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Search, Filter, Grid, List, Star, Heart, ShoppingCart, Sparkles } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
-import { Filter, Grid, List, Star, Sparkles, ShoppingBag } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useCart } from '../context/CartContext';
 import { products, getProductsByDeity, getNewArrivals } from '../data/products';
 
 const Collections = () => {
   const { category } = useParams();
   const { language } = useLanguage();
+  const { addToCart } = useCart();
   const [viewMode, setViewMode] = useState('grid');
   const [showFilters, setShowFilters] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState({
@@ -338,7 +340,7 @@ const Collections = () => {
                           {product.description}
                         </p>
                         <button className="ml-4 bg-temple-saffron text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-temple-saffron/90 transition-colors">
-                          <ShoppingBag className="h-4 w-4" />
+                          <ShoppingCart className="h-4 w-4" />
                           <span>{language === 'hi' ? 'देखें' : 'View'}</span>
                         </button>
                       </div>

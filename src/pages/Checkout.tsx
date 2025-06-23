@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CreditCard, Truck, Shield, Check, ArrowLeft, Sparkles } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import AuthGuard from '../components/AuthGuard';
-import { CreditCard, Truck, Shield, MapPin, Phone, Mail, User, ArrowLeft, CheckCircle } from 'lucide-react';
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -107,7 +107,7 @@ const Checkout = () => {
               className="flex items-center space-x-2 text-temple-brown-deep hover:text-temple-saffron mb-4 transition-colors"
             >
               <ArrowLeft className="h-5 w-5" />
-              <span>{language === 'hi' ? 'कार्ट पर वापस जाएं' : 'Back to Cart'}</span>
+              <span>{language === 'hi' ? 'कार्त पर वापस जाएं' : 'Back to Cart'}</span>
             </button>
             <h1 className="font-serif text-4xl text-temple-brown-deep mb-4">
               {language === 'hi' ? 'पवित्र चेकआउट' : 'Sacred Checkout'}

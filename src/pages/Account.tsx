@@ -4,9 +4,17 @@ import { User, Settings, Package, Heart, LogOut, Shield } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { supabase } from '../lib/supabase';
 
+interface Order {
+  id: string;
+  order_number: string;
+  total_amount: number;
+  status: string;
+  created_at: string;
+}
+
 const Account = () => {
   const { user, profile, signOut } = useAuth();
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

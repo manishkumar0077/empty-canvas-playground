@@ -1,34 +1,28 @@
-import React from 'react';
+import { Globe, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { Globe } from 'lucide-react';
 
 const LanguageSelector = () => {
   const { language, setLanguage } = useLanguage();
 
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value);
+  };
+
   return (
-    <div className="fixed top-4 right-4 z-50 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-temple border border-temple-gold/20">
-      <div className="flex items-center space-x-2">
-        <Globe className="h-4 w-4 text-temple-gold" />
-        <button
-          onClick={() => setLanguage('en')}
-          className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-            language === 'en'
-              ? 'bg-temple-gold text-white'
-              : 'text-temple-brown-deep hover:bg-temple-gold-pale'
-          }`}
-        >
-          EN
-        </button>
-        <button
-          onClick={() => setLanguage('hi')}
-          className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-            language === 'hi'
-              ? 'bg-temple-gold text-white'
-              : 'text-temple-brown-deep hover:bg-temple-gold-pale'
-          }`}
-        >
-          हिं
-        </button>
+    <div className="relative inline-block text-left">
+      <div>
+        <span className="inline-flex w-full rounded-md shadow-sm">
+          <select
+            value={language}
+            onChange={handleLanguageChange}
+            className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-indigo-500 focus:shadow-outline-indigo active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+          </select>
+        </span>
       </div>
     </div>
   );

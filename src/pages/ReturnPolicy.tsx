@@ -1,5 +1,5 @@
 import React from 'react';
-import { RotateCcw, Shield, Clock, CheckCircle, AlertTriangle, Heart } from 'lucide-react';
+import { RotateCcw, Package, Clock, CheckCircle, AlertCircle, Mail } from 'lucide-react';
 
 const ReturnPolicy = () => {
   return (
@@ -8,9 +8,9 @@ const ReturnPolicy = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <RotateCcw className="h-16 w-16 text-temple-gold mx-auto mb-6" />
-          <h1 className="font-serif text-4xl text-temple-brown-deep mb-4">Return Policy</h1>
+          <h1 className="font-serif text-4xl text-temple-brown-deep mb-4">Return & Exchange Policy</h1>
           <p className="text-temple-brown-medium">
-            Your satisfaction is our sacred commitment. Easy returns with understanding.
+            Our sacred commitment to your satisfaction and spiritual journey
           </p>
           <div className="flex items-center justify-center space-x-2 mt-4">
             <div className="h-px bg-gradient-to-r from-transparent via-temple-gold to-transparent w-16"></div>
@@ -22,179 +22,104 @@ const ReturnPolicy = () => {
         {/* Content */}
         <div className="bg-white rounded-2xl shadow-temple p-8 border border-temple-gold/20">
           <div className="prose max-w-none">
+            <p className="text-temple-brown-medium mb-6 text-sm">
+              <strong>Last updated:</strong> December 2024
+            </p>
+
+            <section className="mb-8">
+              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Our Sacred Promise</h2>
+              <div className="space-y-4 text-temple-brown-medium">
+                <p>
+                  At Sadak, we want you to be completely satisfied with your sacred jewelry. If, for any reason, 
+                  you are not happy with your purchase, we offer a hassle-free return and exchange policy.
+                </p>
+                <p>
+                  We believe in the power of our blessed items and stand behind their quality and spiritual significance.
+                </p>
+              </div>
+            </section>
+
             <section className="mb-8">
               <div className="flex items-center space-x-3 mb-4">
-                <Heart className="h-6 w-6 text-temple-gold" />
-                <h2 className="font-serif text-2xl text-temple-brown-deep">Our Return Philosophy</h2>
+                <Package className="h-6 w-6 text-temple-gold" />
+                <h2 className="font-serif text-2xl text-temple-brown-deep">7-Day Return Policy</h2>
               </div>
               <div className="space-y-4 text-temple-brown-medium">
                 <p>
-                  At Sadak, we believe that sacred jewelry should resonate with your soul. If for any reason 
-                  your purchase doesn't bring you the joy and spiritual connection you expected, we're here 
-                  to make it right with compassion and understanding.
+                  You have 7 days from the date of delivery to return your item(s) for a full refund or exchange.
                 </p>
-                <div className="bg-temple-gold-pale/30 rounded-lg p-4 border border-temple-gold/20">
-                  <blockquote className="font-serif text-lg text-temple-brown-deep italic text-center">
-                    "आत्मा की शांति ही हमारा लक्ष्य है।"
-                  </blockquote>
-                  <p className="text-center text-sm text-temple-brown-light mt-2">
-                    Peace of soul is our goal
-                  </p>
-                </div>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Items must be in original condition with all tags attached</li>
+                  <li>Items must be unworn, unused, and unaltered</li>
+                  <li>Original packaging and certificates must be included</li>
+                  <li>Return shipping costs are borne by the customer</li>
+                </ul>
+              </div>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Easy Return Process</h2>
+              <div className="space-y-4 text-temple-brown-medium">
+                <p>
+                  Returning your sacred jewelry is simple and straightforward:
+                </p>
+                <ol className="list-decimal pl-6 space-y-2">
+                  <li>Contact our customer service team at returns@sadak.com to initiate the return</li>
+                  <li>Pack the item securely in its original packaging</li>
+                  <li>Ship the item to the address provided by our team</li>
+                  <li>Once we receive the item, we will process your refund or exchange</li>
+                </ol>
               </div>
             </section>
 
             <section className="mb-8">
               <div className="flex items-center space-x-3 mb-4">
                 <Clock className="h-6 w-6 text-temple-gold" />
-                <h2 className="font-serif text-2xl text-temple-brown-deep">Return Timeframe</h2>
+                <h2 className="font-serif text-2xl text-temple-brown-deep">Exclusions</h2>
               </div>
               <div className="space-y-4 text-temple-brown-medium">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-temple-gold-pale/20 rounded-lg p-4">
-                    <h3 className="font-medium text-temple-brown-deep mb-3 flex items-center">
-                      <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
-                      Standard Returns
-                    </h3>
-                    <ul className="space-y-2 text-sm">
-                      <li><strong>Timeframe:</strong> 7 days from delivery</li>
-                      <li><strong>Condition:</strong> Unworn, original packaging</li>
-                      <li><strong>Refund:</strong> Full refund to original payment method</li>
-                      <li><strong>Processing:</strong> 3-5 business days after receipt</li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-temple-gold-pale/20 rounded-lg p-4">
-                    <h3 className="font-medium text-temple-brown-deep mb-3 flex items-center">
-                      <AlertTriangle className="h-5 w-5 text-temple-saffron mr-2" />
-                      Extended Returns
-                    </h3>
-                    <ul className="space-y-2 text-sm">
-                      <li><strong>Festival Purchases:</strong> 15 days return window</li>
-                      <li><strong>Gift Items:</strong> 30 days with gift receipt</li>
-                      <li><strong>Defective Items:</strong> 90 days warranty coverage</li>
-                      <li><strong>Custom Orders:</strong> Case-by-case evaluation</li>
-                    </ul>
-                  </div>
-                </div>
+                <p>
+                  Certain items are not eligible for return or exchange:
+                </p>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Custom or personalized items</li>
+                  <li>Items that have been altered or damaged by the customer</li>
+                  <li>Items without original tags and packaging</li>
+                  <li>Items purchased during final sale or clearance events</li>
+                  <li>Blessed items where the seal is broken</li>
+                </ul>
               </div>
             </section>
 
             <section className="mb-8">
-              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">What Can Be Returned</h2>
+              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Refund Options</h2>
               <div className="space-y-4 text-temple-brown-medium">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="font-medium text-temple-brown-deep mb-3 text-green-600">✓ Returnable Items</h3>
-                    <ul className="list-disc pl-6 space-y-2 text-sm">
-                      <li>Unworn jewelry in original condition</li>
-                      <li>Items with all original tags and packaging</li>
-                      <li>Standard catalog items</li>
-                      <li>Defective or damaged products</li>
-                      <li>Wrong items shipped by mistake</li>
-                      <li>Items significantly different from description</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-medium text-temple-brown-deep mb-3 text-red-600">✗ Non-Returnable Items</h3>
-                    <ul className="list-disc pl-6 space-y-2 text-sm">
-                      <li>Personalized or custom-made jewelry</li>
-                      <li>Items worn or showing signs of use</li>
-                      <li>Blessed items (unless defective)</li>
-                      <li>Pierced earrings (hygiene reasons)</li>
-                      <li>Items without original packaging</li>
-                      <li>Sale items marked "Final Sale"</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div className="bg-temple-sandalwood/20 rounded-lg p-4 mt-6">
-                  <h4 className="font-medium text-temple-brown-deep mb-2">Special Note on Blessed Items:</h4>
-                  <p className="text-sm">
-                    Items that have undergone our sacred blessing rituals carry spiritual energy and cannot 
-                    be returned unless they are defective. We believe once blessed, the jewelry has begun 
-                    its spiritual journey with you. However, if you're not satisfied, please contact us 
-                    to discuss alternative solutions.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">How to Return</h2>
-              <div className="space-y-6 text-temple-brown-medium">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <div className="text-center p-4 bg-temple-gold-pale/20 rounded-lg">
-                    <div className="text-2xl mb-2">📞</div>
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Step 1: Contact</h4>
-                    <p className="text-sm">Call or email our support team</p>
-                  </div>
-                  
-                  <div className="text-center p-4 bg-temple-gold-pale/20 rounded-lg">
-                    <div className="text-2xl mb-2">📋</div>
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Step 2: Approval</h4>
-                    <p className="text-sm">Receive return authorization</p>
-                  </div>
-                  
-                  <div className="text-center p-4 bg-temple-gold-pale/20 rounded-lg">
-                    <div className="text-2xl mb-2">📦</div>
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Step 3: Package</h4>
-                    <p className="text-sm">Pack item securely with form</p>
-                  </div>
-                  
-                  <div className="text-center p-4 bg-temple-gold-pale/20 rounded-lg">
-                    <div className="text-2xl mb-2">🚚</div>
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Step 4: Ship</h4>
-                    <p className="text-sm">Send using provided label</p>
-                  </div>
-                </div>
-                
-                <div className="bg-temple-gold-pale/30 rounded-lg p-4">
-                  <h4 className="font-medium text-temple-brown-deep mb-3">Required Information for Return:</h4>
-                  <ul className="list-disc pl-6 space-y-1 text-sm">
-                    <li>Order number and purchase date</li>
-                    <li>Item name and SKU</li>
-                    <li>Reason for return</li>
-                    <li>Preferred resolution (refund/exchange)</li>
-                    <li>Photos if item is defective</li>
-                  </ul>
-                </div>
+                <p>
+                  You can choose from the following refund options:
+                </p>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Full refund to your original payment method</li>
+                  <li>Exchange for another item of equal value</li>
+                  <li>Store credit for future purchases</li>
+                </ul>
+                <p className="mt-4">
+                  Refunds are processed within 7-10 business days after we receive the returned item.
+                </p>
               </div>
             </section>
 
             <section className="mb-8">
               <div className="flex items-center space-x-3 mb-4">
-                <Shield className="h-6 w-6 text-temple-gold" />
-                <h2 className="font-serif text-2xl text-temple-brown-deep">Refund Process</h2>
+                <CheckCircle className="h-6 w-6 text-temple-gold" />
+                <h2 className="font-serif text-2xl text-temple-brown-deep">Damaged or Defective Items</h2>
               </div>
               <div className="space-y-4 text-temple-brown-medium">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-temple-gold-pale/20 rounded-lg p-4">
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Inspection</h4>
-                    <p className="text-sm">Items are carefully inspected upon receipt to ensure they meet return conditions.</p>
-                  </div>
-                  
-                  <div className="bg-temple-gold-pale/20 rounded-lg p-4">
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Processing</h4>
-                    <p className="text-sm">Approved returns are processed within 3-5 business days of receipt.</p>
-                  </div>
-                  
-                  <div className="bg-temple-gold-pale/20 rounded-lg p-4">
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Refund</h4>
-                    <p className="text-sm">Refunds are issued to the original payment method within 5-10 business days.</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-3">
-                  <h4 className="font-medium text-temple-brown-deep">Refund Methods:</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-sm">
-                    <li><strong>Credit/Debit Cards:</strong> 5-10 business days</li>
-                    <li><strong>UPI/Digital Wallets:</strong> 3-5 business days</li>
-                    <li><strong>Cash on Delivery:</strong> Bank transfer within 7 days</li>
-                    <li><strong>Store Credit:</strong> Immediate (if requested)</li>
-                  </ul>
-                </div>
+                <p>
+                  If you receive a damaged or defective item, please contact us immediately at returns@sadak.com.
+                </p>
+                <p>
+                  We will arrange for a free return and provide a full refund or exchange, as per your preference.
+                </p>
               </div>
             </section>
 
@@ -202,127 +127,43 @@ const ReturnPolicy = () => {
               <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Exchange Policy</h2>
               <div className="space-y-4 text-temple-brown-medium">
                 <p>
-                  We offer exchanges for size adjustments and style preferences:
+                  If you wish to exchange an item for a different size, color, or design, please follow these steps:
                 </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-medium text-temple-brown-deep mb-3">Size Exchanges:</h4>
-                    <ul className="list-disc pl-6 space-y-2 text-sm">
-                      <li>Free size adjustments for rings and bracelets</li>
-                      <li>Professional resizing by our craftsmen</li>
-                      <li>Turnaround time: 3-5 business days</li>
-                      <li>One free resize per item</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-temple-brown-deep mb-3">Style Exchanges:</h4>
-                    <ul className="list-disc pl-6 space-y-2 text-sm">
-                      <li>Exchange for different style of equal value</li>
-                      <li>Pay difference for higher-value items</li>
-                      <li>Receive credit for lower-value exchanges</li>
-                      <li>Same return conditions apply</li>
-                    </ul>
-                  </div>
+                <ol className="list-decimal pl-6 space-y-2">
+                  <li>Contact our customer service team at returns@sadak.com to check availability</li>
+                  <li>Return the original item following our return process</li>
+                  <li>Once we receive the returned item, we will ship the new item to you</li>
+                </ol>
+                <p className="mt-4">
+                  Additional shipping charges may apply for exchanges.
+                </p>
+              </div>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Spiritual Considerations</h2>
+              <div className="space-y-4 text-temple-brown-medium">
+                <div className="bg-temple-gold-pale/30 rounded-lg p-4 border border-temple-gold/20">
+                  <p className="font-medium text-temple-brown-deep mb-2">Important Note:</p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>We handle all returns with utmost respect for the sacred nature of our jewelry</li>
+                    <li>Returned items are purified before being offered again</li>
+                    <li>We encourage you to reflect on your spiritual journey before initiating a return</li>
+                  </ul>
                 </div>
               </div>
             </section>
 
             <section className="mb-8">
-              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Defective Items & Warranty</h2>
+              <div className="flex items-center space-x-3 mb-4">
+                <AlertCircle className="h-6 w-6 text-temple-gold" />
+                <h2 className="font-serif text-2xl text-temple-brown-deep">Final Sale Items</h2>
+              </div>
               <div className="space-y-4 text-temple-brown-medium">
                 <p>
-                  We stand behind the quality of our sacred jewelry:
+                  Items marked as "Final Sale" are not eligible for return or exchange. Please review your order carefully 
+                  before completing your purchase.
                 </p>
-                
-                <div className="bg-temple-gold-pale/30 rounded-lg p-4">
-                  <h4 className="font-medium text-temple-brown-deep mb-3">Warranty Coverage:</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-sm">
-                    <li><strong>Manufacturing Defects:</strong> 90 days full coverage</li>
-                    <li><strong>Stone Setting Issues:</strong> 60 days repair/replace</li>
-                    <li><strong>Plating/Finish Problems:</strong> 30 days coverage</li>
-                    <li><strong>Chain/Clasp Defects:</strong> 90 days replacement</li>
-                  </ul>
-                </div>
-                
-                <div className="space-y-3">
-                  <h4 className="font-medium text-temple-brown-deep">Not Covered by Warranty:</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-sm">
-                    <li>Normal wear and tear</li>
-                    <li>Damage from misuse or accidents</li>
-                    <li>Exposure to chemicals or extreme conditions</li>
-                    <li>Modifications by third parties</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Return Shipping</h2>
-              <div className="space-y-4 text-temple-brown-medium">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-medium text-temple-brown-deep mb-3">Free Return Shipping:</h4>
-                    <ul className="list-disc pl-6 space-y-2 text-sm">
-                      <li>Defective or wrong items</li>
-                      <li>Our shipping error</li>
-                      <li>Quality issues</li>
-                      <li>Orders above ₹5000</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-temple-brown-deep mb-3">Customer Pays Shipping:</h4>
-                    <ul className="list-disc pl-6 space-y-2 text-sm">
-                      <li>Change of mind returns</li>
-                      <li>Size/style exchanges</li>
-                      <li>Orders below ₹5000</li>
-                      <li>International returns</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div className="bg-temple-sandalwood/20 rounded-lg p-4">
-                  <h4 className="font-medium text-temple-brown-deep mb-2">Important Shipping Notes:</h4>
-                  <ul className="list-disc pl-6 space-y-1 text-sm">
-                    <li>Use original packaging when possible</li>
-                    <li>Include all accessories and documentation</li>
-                    <li>Get tracking and insurance for valuable items</li>
-                    <li>We're not responsible for items lost in return shipping</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Special Circumstances</h2>
-              <div className="space-y-4 text-temple-brown-medium">
-                <div className="space-y-4">
-                  <div className="bg-temple-gold-pale/20 rounded-lg p-4">
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Gift Returns:</h4>
-                    <p className="text-sm">
-                      Gift recipients can return items with gift receipt for store credit or exchange. 
-                      Original purchaser will be notified of the return for refund processing.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-temple-gold-pale/20 rounded-lg p-4">
-                    <h4 className="font-medium text-temple-brown-deep mb-2">International Returns:</h4>
-                    <p className="text-sm">
-                      International customers must contact us before returning items. Return shipping 
-                      costs and customs duties are customer's responsibility.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-temple-gold-pale/20 rounded-lg p-4">
-                    <h4 className="font-medium text-temple-brown-deep mb-2">Bulk/Wholesale Returns:</h4>
-                    <p className="text-sm">
-                      Special return terms apply for bulk orders. Please refer to your wholesale 
-                      agreement or contact our business team for details.
-                    </p>
-                  </div>
-                </div>
               </div>
             </section>
 
@@ -330,14 +171,13 @@ const ReturnPolicy = () => {
               <h2 className="font-serif text-2xl text-temple-brown-deep mb-4">Contact Our Returns Team</h2>
               <div className="space-y-4 text-temple-brown-medium">
                 <p>
-                  Our compassionate returns team is here to help make the process smooth:
+                  Our dedicated returns team is here to assist you with any questions or concerns:
                 </p>
                 <div className="bg-temple-gold-pale/30 rounded-lg p-4">
                   <p><strong>Email:</strong> returns@sadak.com</p>
                   <p><strong>Phone:</strong> +91 98765 43210</p>
-                  <p><strong>WhatsApp:</strong> +91 98765 43210</p>
-                  <p><strong>Hours:</strong> 9 AM to 9 PM (IST), Daily</p>
-                  <p><strong>Return Address:</strong> Will be provided with return authorization</p>
+                  <p><strong>Address:</strong> Near Ganga Ghat, Haridwar, Uttarakhand 249401, India</p>
+                  <p><strong>Business Hours:</strong> 9 AM to 9 PM (IST), Daily</p>
                 </div>
               </div>
             </section>
@@ -345,10 +185,10 @@ const ReturnPolicy = () => {
             {/* Sacred Quote */}
             <div className="text-center mt-12 p-6 bg-temple-gold-pale/20 rounded-xl border border-temple-gold/20">
               <blockquote className="font-serif text-xl text-temple-brown-deep italic mb-3">
-                "संतुष्टि ही सच्ची संपत्ति है।"
+                "पवित्रता और संतुष्टि - हमारी वापसी नीति का सार।"
               </blockquote>
               <p className="text-sm text-temple-brown-light">
-                Satisfaction is the true wealth - Your happiness is our success
+                Purity and satisfaction - The essence of our return policy
               </p>
             </div>
           </div>

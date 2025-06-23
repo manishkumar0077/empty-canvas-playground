@@ -1,5 +1,7 @@
 import React from 'react';
-import { Sparkles, Heart, Shield, Star, Gift, Zap } from 'lucide-react';
+import { Sparkles, Heart, Star, Gift, Users, Award, ArrowRight, Package } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 const SacredBlessings = () => {
   const blessings = [
@@ -254,32 +256,30 @@ const SacredBlessings = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              {
-                step: '1',
-                title: 'Selection',
-                description: 'Choose your desired blessings based on your spiritual needs',
-                icon: '🎯'
-              },
-              {
-                step: '2',
-                title: 'Preparation',
-                description: 'Your jewelry is cleansed and prepared for the blessing ritual',
-                icon: '🧘‍♀️'
-              },
-              {
-                step: '3',
-                title: 'Blessing Ritual',
-                description: 'Sacred ceremonies are performed by experienced spiritual practitioners',
-                icon: '🕉️'
-              },
-              {
-                step: '4',
-                title: 'Energized Delivery',
-                description: 'Your blessed jewelry is carefully packaged and delivered with love',
-                icon: '📦'
-              }
-            ].map((process, index) => (
+            {[{
+              step: '1',
+              title: 'Selection',
+              description: 'Choose your desired blessings based on your spiritual needs',
+              icon: '🎯'
+            },
+            {
+              step: '2',
+              title: 'Preparation',
+              description: 'Your jewelry is cleansed and prepared for the blessing ritual',
+              icon: '🧘‍♀️'
+            },
+            {
+              step: '3',
+              title: 'Blessing Ritual',
+              description: 'Sacred ceremonies are performed by experienced spiritual practitioners',
+              icon: '🕉️'
+            },
+            {
+              step: '4',
+              title: 'Energized Delivery',
+              description: 'Your blessed jewelry is carefully packaged and delivered with love',
+              icon: '📦'
+            }].map((process, index) => (
               <div key={index} className="text-center" data-aos="fade-up" data-aos-delay={index * 100}>
                 <div className="relative mb-6">
                   <div className="w-20 h-20 bg-temple-gold-light/30 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -310,26 +310,24 @@ const SacredBlessings = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Priya Sharma',
-                location: 'Mumbai',
-                text: 'The Ganga Jal blessing transformed my pendant completely. I can feel the positive energy every day.',
-                rating: 5
-              },
-              {
-                name: 'Rajesh Kumar',
-                location: 'Delhi',
-                text: 'After the Vedic mantra chanting, my business started flourishing. Truly divine blessings!',
-                rating: 5
-              },
-              {
-                name: 'Anita Patel',
-                location: 'Ahmedabad',
-                text: 'The temple blessing package brought peace and harmony to my family. Highly recommended!',
-                rating: 5
-              }
-            ].map((testimonial, index) => (
+            {[{
+              name: 'Priya Sharma',
+              location: 'Mumbai',
+              text: 'The Ganga Jal blessing transformed my pendant completely. I can feel the positive energy every day.',
+              rating: 5
+            },
+            {
+              name: 'Rajesh Kumar',
+              location: 'Delhi',
+              text: 'After the Vedic mantra chanting, my business started flourishing. Truly divine blessings!',
+              rating: 5
+            },
+            {
+              name: 'Anita Patel',
+              location: 'Ahmedabad',
+              text: 'The temple blessing package brought peace and harmony to my family. Highly recommended!',
+              rating: 5
+            }].map((testimonial, index) => (
               <div
                 key={index}
                 className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-temple border border-temple-gold/20"
