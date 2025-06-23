@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Sparkles } from 'lucide-react';
+import { Star, Sparkles, ArrowRight, Package, Users, Award, Shield } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 

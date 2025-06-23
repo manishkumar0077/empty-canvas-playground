@@ -1,9 +1,69 @@
-import React from 'react';
-import { Sparkles, Heart, Shield, Zap } from 'lucide-react';
+
+import { Sparkles, Heart, Shield, Zap, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 const SacredBlessings = () => {
+  const blessings = [
+    {
+      id: 1,
+      name: 'Ganga Jal Blessing',
+      hindiName: 'गंगा जल आशीर्वाद',
+      description: 'Sacred water from River Ganga blessed with Vedic mantras',
+      benefits: ['Purification of negative energy', 'Spiritual cleansing', 'Divine protection'],
+      price: 500,
+      color: 'from-blue-500 to-blue-600',
+      icon: Heart
+    },
+    {
+      id: 2,
+      name: 'Vedic Mantra Chanting',
+      hindiName: 'वैदिक मंत्र जाप',
+      description: 'Ancient Sanskrit mantras chanted by experienced priests',
+      benefits: ['Enhanced spiritual vibration', 'Peace of mind', 'Prosperity'],
+      price: 750,
+      color: 'from-temple-saffron to-temple-gold',
+      icon: Sparkles
+    },
+    {
+      id: 3,
+      name: 'Temple Blessing',
+      hindiName: 'मंदिर आशीर्वाद',
+      description: 'Blessed in sacred temples with traditional rituals',
+      benefits: ['Divine blessings', 'Spiritual protection', 'Good fortune'],
+      price: 1000,
+      color: 'from-purple-500 to-purple-600',
+      icon: Shield
+    }
+  ];
+
+  const packages = [
+    {
+      name: 'Essential Blessings',
+      hindiName: 'आवश्यक आशीर्वाद',
+      price: 1800,
+      originalPrice: 2250,
+      includes: ['Ganga Jal Blessing', 'Vedic Mantra Chanting', 'Sacred Thread Blessing'],
+      popular: false
+    },
+    {
+      name: 'Complete Sacred Package',
+      hindiName: 'संपूर्ण पवित्र पैकेज',
+      price: 2500,
+      originalPrice: 3250,
+      includes: ['All Essential Blessings', 'Temple Blessing', 'Rudraksha Energization', 'Gemstone Activation'],
+      popular: true
+    },
+    {
+      name: 'Divine Protection',
+      hindiName: 'दिव्य सुरक्षा',
+      price: 3200,
+      originalPrice: 4000,
+      includes: ['Complete Sacred Package', 'Kavacha Mantra', 'Personal Deity Blessing', 'Lifetime Spiritual Support'],
+      popular: false
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-temple-ivory pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -40,7 +100,7 @@ const SacredBlessings = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blessings.map((blessing, index) => {
+              {blessings.map((blessing: any, index: number) => {
                 const Icon = blessing.icon;
                 return (
                   <div
@@ -67,7 +127,7 @@ const SacredBlessings = () => {
                       <div className="space-y-2 mb-6">
                         <h4 className="font-medium text-temple-brown-deep">Benefits:</h4>
                         <ul className="space-y-1">
-                          {blessing.benefits.map((benefit, idx) => (
+                          {blessing.benefits.map((benefit: string, idx: number) => (
                             <li key={idx} className="flex items-center text-sm text-temple-brown-medium">
                               <div className="w-1.5 h-1.5 bg-temple-saffron rounded-full mr-2"></div>
                               {benefit}
@@ -100,7 +160,7 @@ const SacredBlessings = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {packages.map((pkg, index) => (
+              {packages.map((pkg: any, index: number) => (
                 <div
                   key={index}
                   className={`relative bg-white rounded-2xl shadow-temple hover:shadow-temple-lg transition-all duration-300 overflow-hidden border-2 ${
@@ -132,7 +192,7 @@ const SacredBlessings = () => {
                     
                     <div className="space-y-3 mb-8">
                       <h4 className="font-medium text-temple-brown-deep">Includes:</h4>
-                      {pkg.includes.map((item, idx) => (
+                      {pkg.includes.map((item: string, idx: number) => (
                         <div key={idx} className="flex items-center text-temple-brown-medium">
                           <Star className="h-4 w-4 text-temple-gold mr-2" />
                           <span className="text-sm">{item}</span>
